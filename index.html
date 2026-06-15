@@ -78,40 +78,67 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:400;line-height:1.05;letter-s
   50% { transform: translateY(-10px); }
 }
 
-/* ---------- GLOBAL BACKGROUND MOTIF ---------- */
+/* ---------- GLOBAL BACKGROUND MOTIF (NEW MANDALA FLOWER) ---------- */
 .global-motif {
-  position: fixed; inset: 0; z-index: -5; pointer-events: none; overflow: hidden;
+  position: fixed; inset: 0; z-index: -10; pointer-events: none; overflow: hidden;
 }
+
+/* Extracted Corner Colors for Ambient Glow */
 .orb {
-  position: absolute; border-radius: 50%; filter: blur(100px);
-  animation: breathe 20s infinite alternate ease-in-out;
+  position: absolute; border-radius: 50%; filter: blur(120px);
+  animation: breatheOrbs 20s infinite alternate ease-in-out;
 }
-.orb-1 {
-  top: -10%; left: -10%; width: 55vw; height: 55vw;
-  background: rgba(217,168,142,0.35); /* Rose Glow */
+.orb-tl {
+  top: -10%; left: -10%; width: 50vw; height: 50vw;
+  background: rgba(140, 35, 30, 0.15); /* Deep burgundy/red from top-left corner */
 }
-.orb-2 {
-  bottom: -15%; right: -10%; width: 65vw; height: 65vw;
-  background: rgba(181,86,46,0.18); /* Terracotta Glow */
+.orb-br {
+  bottom: -15%; right: -10%; width: 60vw; height: 60vw;
+  background: rgba(100, 120, 60, 0.15); /* Olive/Khaki green from bottom-right corner */
   animation-direction: alternate-reverse;
   animation-duration: 24s;
 }
-.flower-svg {
-  position: absolute; fill: none; stroke: var(--terracotta);
-  stroke-width: 1.2px; opacity: 0.07;
-  animation: floatRotate 45s infinite linear;
-}
-.f-top { top: -15%; right: -15%; width: 50vw; height: auto; }
-.f-bot { bottom: -10%; left: -10%; width: 60vw; height: auto; animation-direction: reverse; animation-duration: 55s; }
 
-@keyframes breathe {
-  0% { transform: scale(0.9) translate(0, 0); opacity: 0.7; }
-  100% { transform: scale(1.1) translate(4%, 4%); opacity: 1; }
+/* Recreated Geometric Mandala/Lotus Flower SVG */
+.exact-flower-svg {
+  position: absolute; 
+  fill: none; 
+  stroke: var(--terracotta-deep);
+  stroke-width: 0.8px; 
 }
-@keyframes floatRotate {
-  0% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-30px) rotate(180deg); }
-  100% { transform: translateY(0) rotate(360deg); }
+.f-hero {
+  top: 50%; left: 50%; width: 80vw; height: 80vw; max-width: 900px; max-height: 900px;
+  margin-top: -40vw; margin-left: -40vw; /* Center align */
+  opacity: 0.08;
+  animation: slowSpinBreathe 60s infinite linear;
+}
+@media (min-width: 900px) {
+  .f-hero { margin-top: -450px; margin-left: -450px; }
+}
+
+.f-corner-tl { 
+  top: -15%; left: -10%; width: 45vw; height: auto; 
+  opacity: 0.05;
+  animation: gentleFloat 12s infinite ease-in-out alternate; 
+}
+.f-corner-br { 
+  bottom: -10%; right: -15%; width: 55vw; height: auto; 
+  opacity: 0.05;
+  animation: gentleFloat 15s infinite ease-in-out alternate-reverse; 
+}
+
+@keyframes breatheOrbs {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  100% { transform: scale(1.1); opacity: 1; }
+}
+@keyframes slowSpinBreathe {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.05); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+@keyframes gentleFloat {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-40px); }
 }
 
 /* ---------- NAV ---------- */
@@ -194,7 +221,6 @@ header.scrolled .brand img {
 .hero{
   min-height:100svh;position:relative;display:flex;align-items:center; justify-content: center;
   padding-top:8rem;padding-bottom:4rem;
-  /* background removed to show global motif */
 }
 .hero-grid{
   display:grid;grid-template-columns:1fr;gap:2rem;
@@ -264,9 +290,9 @@ section{position:relative}
 .sec-title{font-size:clamp(2rem,4.5vw,3.4rem);margin-top:1.1rem;letter-spacing:-.025em}
 .sec-title em{font-style:italic;color:var(--terracotta)}
 
-/* GLASSMORPHISM BACKGROUNDS (Allows global motif to show through) */
-.about, .values { background: rgba(250, 246, 239, 0.7); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
-.faq, .services { background: rgba(242, 235, 225, 0.7); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+/* GLASSMORPHISM BACKGROUNDS */
+.about, .values { background: rgba(250, 246, 239, 0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.faq, .services { background: rgba(242, 235, 225, 0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 
 /* ABOUT */
 .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,5vw,5rem);align-items:center}
@@ -322,7 +348,7 @@ section{position:relative}
 .svc-tag{font-size:.8rem;padding:.4rem .85rem;border-radius:100px;background:rgba(217,168,142,.25);color:var(--terracotta-deep);font-weight:600}
 .svc-dur{display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--clay);margin-top:.4rem;font-weight:600}
 
-/* BIOLOGY OF STRESS (Solid bg to contrast with transparent sections) */
+/* BIOLOGY OF STRESS */
 .biology{background:var(--ink);color:var(--oat);overflow:hidden;position:relative}
 .biology::before{
   content:"";position:absolute;top:-120px;right:-120px;width:420px;height:420px;border-radius:50%;
@@ -367,7 +393,7 @@ section{position:relative}
 .val h3{font-size:1.35rem;margin-bottom:.7rem;font-style:italic}
 .val p{color:var(--ink-soft);font-size:.96rem}
 
-/* REVIEWS (Solid background) */
+/* REVIEWS */
 .reviews{background:var(--ink);color:var(--oat);overflow:hidden}
 .reviews .eyebrow{color:var(--rose)}
 .reviews .eyebrow::before{background:var(--rose)}
@@ -420,7 +446,7 @@ section{position:relative}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .5s var(--ease)}
 .faq-a p{padding:0 0 1.5rem;color:var(--ink-soft);max-width:60ch}
 
-/* CONTACT (Solid background) */
+/* CONTACT */
 .contact{background:var(--terracotta);color:var(--cream);position:relative;overflow:hidden}
 .contact::before{content:"";position:absolute;bottom:-160px;left:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(250,246,239,.16),transparent 70%)}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center;position:relative}
@@ -470,8 +496,9 @@ footer{background:var(--ink);color:rgba(242,235,225,.6);padding:2rem 0}
   /* Adjust Motif for Tablet/Mobile */
   .orb-1 { width: 90vw; height: 90vw; }
   .orb-2 { width: 100vw; height: 100vw; }
-  .f-top { width: 85vw; right: -25%; top: -5%; }
-  .f-bot { width: 95vw; left: -25%; bottom: -5%; }
+  .f-hero { width: 150vw; height: 150vw; margin-top: -75vw; margin-left: -75vw; opacity: 0.05; }
+  .f-corner-tl { width: 85vw; left: -25%; top: -5%; }
+  .f-corner-br { width: 95vw; right: -25%; bottom: -5%; }
 }
 @media(max-width:680px){
   .nav-links{display:none}
@@ -488,7 +515,7 @@ footer{background:var(--ink);color:rgba(242,235,225,.6);padding:2rem 0}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   .reveal{opacity:1;transform:none}
   .hero h1 .ln i,.hero-eyebrow,.hero-sub,.hero-actions,.scroll-cue{opacity:1;transform:none;animation:none}
-  .orb, .flower-svg { animation: none !important; }
+  .orb, .exact-flower-svg { animation: none !important; }
 }
 </style>
 </head>
@@ -499,21 +526,69 @@ footer{background:var(--ink);color:rgba(242,235,225,.6);padding:2rem 0}
 </div>
 
 <div class="global-motif" aria-hidden="true">
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <svg class="flower-svg f-top" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M100 10 C100 10 140 40 140 100 C140 160 100 190 100 190 C100 190 60 160 60 100 C60 40 100 10 100 10 Z" />
-    <path d="M10 100 C10 100 40 60 100 60 C160 60 190 100 190 100 C190 100 160 140 100 140 C40 140 10 100 10 100 Z" />
-    <path d="M36 36 C36 36 80 40 100 100 C120 160 164 164 164 164 C164 164 120 160 100 100 C80 40 36 36 36 36 Z" />
-    <path d="M164 36 C164 36 120 40 100 100 C80 160 36 164 36 164 C36 164 80 160 100 100 C120 40 164 36 164 36 Z" />
-    <circle cx="100" cy="100" r="15" />
+  <div class="orb orb-tl"></div>
+  <div class="orb orb-br"></div>
+  
+  <svg class="exact-flower-svg f-hero" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(250, 250)">
+      <path d="M 0 -220 L 20 -150 L 0 -110 L -20 -150 Z" />
+      <path d="M 0 220 L 20 150 L 0 110 L -20 150 Z" />
+      <path d="M 220 0 L 150 20 L 110 0 L 150 -20 Z" />
+      <path d="M -220 0 L -150 20 L -110 0 L -150 -20 Z" />
+      <path d="M 155 -155 L 120 -100 L 78 -78 L 100 -120 Z" />
+      <path d="M -155 155 L -120 100 L -78 78 L -100 120 Z" />
+      <path d="M 155 155 L 100 120 L 78 78 L 120 100 Z" />
+      <path d="M -155 -155 L -100 -120 L -78 -78 L -120 -100 Z" />
+      
+      <path d="M 0 -130 C 40 -130 50 -60 0 -30 C -50 -60 -40 -130 0 -130 Z" />
+      <path d="M 0 130 C 40 130 50 60 0 30 C -50 60 -40 130 0 130 Z" />
+      <path d="M 130 0 C 130 40 60 50 30 0 C 60 -50 130 -40 130 0 Z" />
+      <path d="M -130 0 C -130 40 -60 50 -30 0 C -60 -50 -130 -40 -130 0 Z" />
+      
+      <path d="M 92 -92 C 120 -60 60 -20 21 -21 C 60 20 120 -60 92 -92 Z" />
+      <path d="M -92 92 C -120 60 -60 20 -21 21 C -60 -20 -120 60 -92 92 Z" />
+      <path d="M 92 92 C 60 120 20 60 21 21 C -20 60 60 120 92 92 Z" />
+      <path d="M -92 -92 C -60 -120 -20 -60 -21 -21 C 20 -60 -60 -120 -92 -92 Z" />
+      
+      <circle cx="0" cy="0" r="15" />
+      <circle cx="0" cy="0" r="30" stroke-dasharray="4 4" />
+    </g>
   </svg>
-  <svg class="flower-svg f-bot" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M100 10 C100 10 140 40 140 100 C140 160 100 190 100 190 C100 190 60 160 60 100 C60 40 100 10 100 10 Z" />
-    <path d="M10 100 C10 100 40 60 100 60 C160 60 190 100 190 100 C190 100 160 140 100 140 C40 140 10 100 10 100 Z" />
-    <path d="M36 36 C36 36 80 40 100 100 C120 160 164 164 164 164 C164 164 120 160 100 100 C80 40 36 36 36 36 Z" />
-    <path d="M164 36 C164 36 120 40 100 100 C80 160 36 164 36 164 C36 164 80 160 100 100 C120 40 164 36 164 36 Z" />
-    <circle cx="100" cy="100" r="15" />
+
+  <svg class="exact-flower-svg f-corner-tl" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(250, 250)">
+      <path d="M 0 -220 L 20 -150 L 0 -110 L -20 -150 Z" />
+      <path d="M 0 220 L 20 150 L 0 110 L -20 150 Z" />
+      <path d="M 220 0 L 150 20 L 110 0 L 150 -20 Z" />
+      <path d="M -220 0 L -150 20 L -110 0 L -150 -20 Z" />
+      <path d="M 155 -155 L 120 -100 L 78 -78 L 100 -120 Z" />
+      <path d="M -155 155 L -120 100 L -78 78 L -100 120 Z" />
+      <path d="M 155 155 L 100 120 L 78 78 L 120 100 Z" />
+      <path d="M -155 -155 L -100 -120 L -78 -78 L -120 -100 Z" />
+      <path d="M 0 -130 C 40 -130 50 -60 0 -30 C -50 -60 -40 -130 0 -130 Z" />
+      <path d="M 0 130 C 40 130 50 60 0 30 C -50 60 -40 130 0 130 Z" />
+      <path d="M 130 0 C 130 40 60 50 30 0 C 60 -50 130 -40 130 0 Z" />
+      <path d="M -130 0 C -130 40 -60 50 -30 0 C -60 -50 -130 -40 -130 0 Z" />
+      <circle cx="0" cy="0" r="15" />
+    </g>
+  </svg>
+  
+  <svg class="exact-flower-svg f-corner-br" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(250, 250)">
+      <path d="M 0 -220 L 20 -150 L 0 -110 L -20 -150 Z" />
+      <path d="M 0 220 L 20 150 L 0 110 L -20 150 Z" />
+      <path d="M 220 0 L 150 20 L 110 0 L 150 -20 Z" />
+      <path d="M -220 0 L -150 20 L -110 0 L -150 -20 Z" />
+      <path d="M 155 -155 L 120 -100 L 78 -78 L 100 -120 Z" />
+      <path d="M -155 155 L -120 100 L -78 78 L -100 120 Z" />
+      <path d="M 155 155 L 100 120 L 78 78 L 120 100 Z" />
+      <path d="M -155 -155 L -100 -120 L -78 -78 L -120 -100 Z" />
+      <path d="M 0 -130 C 40 -130 50 -60 0 -30 C -50 -60 -40 -130 0 -130 Z" />
+      <path d="M 0 130 C 40 130 50 60 0 30 C -50 60 -40 130 0 130 Z" />
+      <path d="M 130 0 C 130 40 60 50 30 0 C 60 -50 130 -40 130 0 Z" />
+      <path d="M -130 0 C -130 40 -60 50 -30 0 C -60 -50 -130 -40 -130 0 Z" />
+      <circle cx="0" cy="0" r="15" />
+    </g>
   </svg>
 </div>
 
