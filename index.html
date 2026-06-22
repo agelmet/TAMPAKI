@@ -274,42 +274,88 @@ section{position:relative}
 .about-media .main img{width:100%;height:100%;object-fit:cover}
 .about-body p{margin-bottom:1.4rem;color:var(--ink-soft);font-size:1.05rem; line-height: 1.65;}
 
-/* SPECIALIZATIONS */
+/* ---------- SPECIALIZATIONS (WOW DESIGN) ---------- */
 .spec-grid { 
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-  gap: 1.5rem; margin-top: 3.5rem; 
+  display: flex; flex-wrap: wrap; justify-content: center; 
+  gap: 2rem; margin-top: 4rem; 
 }
 .spec-card { 
-  background: var(--cream); border: 1px solid var(--line); border-radius: 20px; 
-  padding: 2.2rem; transition: transform 0.3s, box-shadow 0.3s; 
+  position: relative; overflow: hidden;
+  background: rgba(255, 255, 255, 0.7); 
+  border: 1px solid rgba(181,86,46,0.15); 
+  border-radius: 20px; padding: 2.5rem 2rem; 
+  flex: 1 1 300px; max-width: 360px; /* Forces exactly 3 per row max, perfect for 5 items symmetry */
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.5), 0 10px 30px -15px rgba(0,0,0,0.05);
 }
+.spec-card::after {
+  content: ""; position: absolute; bottom: -30px; right: -30px;
+  width: 160px; height: 160px;
+  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg"><g transform="translate(250, 250)" stroke="%238F3F1E" fill="none" stroke-width="2" opacity="0.08"><path d="M 0 -220 L 20 -150 L 0 -110 L -20 -150 Z" /><path d="M 0 220 L 20 150 L 0 110 L -20 150 Z" /><path d="M 220 0 L 150 20 L 110 0 L 150 -20 Z" /><path d="M -220 0 L -150 20 L -110 0 L -150 -20 Z" /><path d="M 155 -155 L 120 -100 L 78 -78 L 100 -120 Z" /><path d="M -155 155 L -120 100 L -78 78 L -100 120 Z" /><path d="M 155 155 L 100 120 L 78 78 L 120 100 Z" /><path d="M -155 -155 L -100 -120 L -78 -78 L -120 -100 Z" /><path d="M 0 -130 C 40 -130 50 -60 0 -30 C -50 -60 -40 -130 0 -130 Z" /><path d="M 0 130 C 40 130 50 60 0 30 C -50 60 -40 130 0 130 Z" /><path d="M 130 0 C 130 40 60 50 30 0 C 60 -50 130 -40 130 0 Z" /><path d="M -130 0 C -130 40 -60 50 -30 0 C -60 -50 -130 -40 -130 0 Z" /></g></svg>') no-repeat center center;
+  background-size: contain;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 0; pointer-events: none;
+}
+.spec-card * { position: relative; z-index: 1; }
 .spec-card:hover { 
-  transform: translateY(-5px); box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1); 
+  transform: translateY(-12px) scale(1.02); 
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 30px 60px -15px rgba(181,86,46,0.2), 0 0 0 1px rgba(181,86,46,0.3); 
+}
+.spec-card:hover::after { transform: scale(1.2) rotate(25deg); }
+
+.spec-num {
+  font-family: var(--display); font-size: 4.5rem; color: rgba(181,86,46,0.08);
+  position: absolute; top: -15px; left: 15px; line-height: 1; font-style: italic;
+  transition: color 0.5s var(--ease), transform 0.5s var(--ease);
+  pointer-events: none; z-index: 0;
+}
+.spec-card:hover .spec-num {
+  color: rgba(181,86,46,0.2); transform: scale(1.1) translateX(5px);
 }
 .spec-card h3 { 
-  font-family: var(--display); font-size: 1.3rem; color: var(--terracotta-deep); 
-  margin-bottom: 0.8rem; line-height: 1.25; 
+  font-family: var(--display); font-size: 1.35rem; color: var(--terracotta-deep); 
+  margin-top: 1rem; margin-bottom: 1rem; line-height: 1.25; 
 }
 .spec-card p { 
-  color: var(--ink-soft); font-size: 0.95rem; line-height: 1.6; margin: 0;
+  color: var(--ink-soft); font-size: 0.98rem; line-height: 1.6; margin: 0;
 }
 
-/* SERVICES */
-.services-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:3rem}
+/* ---------- SERVICES (WOW PILL DESIGN) ---------- */
 .svc-boxes {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin-top: 3.5rem;
 }
 .svc-box {
-  background: var(--cream); border: 1px solid var(--line); border-radius: 16px;
-  padding: 2.5rem 1.5rem; text-align: center; font-family: var(--display);
-  font-size: 1.25rem; color: var(--terracotta-deep); line-height: 1.3;
-  transition: all 0.3s var(--ease); display: flex; align-items: center; justify-content: center;
-  min-height: 140px; box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  position: relative; overflow: hidden;
+  flex: 1 1 300px; max-width: 380px; /* Perfect symmetry for 5 items */
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(181,86,46, 0.25);
+  border-radius: 100px; 
+  padding: 1.5rem 2.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  font-family: var(--display); font-size: 1.2rem; color: var(--terracotta-deep);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 25px -10px rgba(0,0,0,0.05);
+  z-index: 1; cursor: pointer;
+}
+.svc-box::before {
+  content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(135deg, var(--terracotta), var(--rose));
+  z-index: -1; opacity: 0; transition: opacity 0.5s var(--ease);
 }
 .svc-box:hover {
-  background: var(--terracotta); color: var(--cream); border-color: var(--terracotta);
-  transform: translateY(-6px); box-shadow: 0 20px 35px -10px rgba(181,86,46,0.3);
+  color: var(--cream); transform: translateY(-6px);
+  box-shadow: 0 25px 40px -10px rgba(181,86,46,0.3);
+  border-color: transparent;
 }
+.svc-box:hover::before { opacity: 1; }
+.svc-box span { z-index: 2; line-height: 1.3; }
+.svc-arr {
+  width: 26px; height: 26px; stroke: currentColor; fill: none; stroke-width: 2;
+  transition: transform 0.5s var(--ease), opacity 0.5s; opacity: 0.6; z-index: 2; flex-shrink: 0; margin-left: 1rem;
+}
+.svc-box:hover .svc-arr { transform: translateX(6px); opacity: 1; }
+
 
 /* REVIEWS */
 .reviews{background:var(--ink);color:var(--oat);overflow:hidden}
@@ -344,8 +390,6 @@ section{position:relative}
 .contact{background:var(--terracotta);color:var(--cream);position:relative;overflow:hidden}
 .contact::before{content:"";position:absolute;bottom:-160px;left:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(250,246,239,.16),transparent 70%)}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center;position:relative}
-.contact .eyebrow{color:rgba(250,246,239,.85)}
-.contact .eyebrow::before{background:rgba(250,246,239,.85)}
 .contact-info{display:flex;flex-direction:column;gap:1.3rem; margin-top: 1.5rem;}
 .cinfo{display:flex;align-items:flex-start;gap:1rem}
 .cinfo svg{width:22px;height:22px;flex:none;margin-top:2px;color:var(--cream)}
@@ -371,7 +415,7 @@ footer{background:var(--ink);color:rgba(242,235,225,.6);padding:2rem 0}
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .reveal.in{opacity:1;transform:none}
-.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}.reveal.d4{transition-delay:.4s}
+.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}.reveal.d4{transition-delay:.4s}.reveal.d5{transition-delay:.5s}
 
 /* RESPONSIVE */
 @media(max-width:980px){
@@ -394,6 +438,11 @@ footer{background:var(--ink);color:rgba(242,235,225,.6);padding:2rem 0}
   .foot-bottom{flex-direction:column;text-align:center}
   .foot-grid{justify-content:center;text-align:center}
   .brand-text { display: none; }
+  
+  .spec-card { padding: 2rem 1.5rem; }
+  .svc-box { border-radius: 20px; text-align: center; justify-content: center; flex-direction: column; gap: 0.8rem; }
+  .svc-arr { margin-left: 0; transform: rotate(90deg); }
+  .svc-box:hover .svc-arr { transform: translateY(6px) rotate(90deg); }
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
@@ -405,10 +454,12 @@ footer{background:var(--ink);color:rgba(242,235,225,.6);padding:2rem 0}
 </head>
 <body>
 
+<!-- ============ GLOBAL ANIMATED MOTIF (EXACT MANDALA FLOWER) ============ -->
 <div class="global-motif" aria-hidden="true">
   <div class="orb orb-tl"></div>
   <div class="orb orb-br"></div>
   
+  <!-- Central Hero Flower -->
   <svg class="exact-flower-svg f-hero" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
     <g transform="translate(250, 250)">
       <path d="M 0 -220 L 20 -150 L 0 -110 L -20 -150 Z" />
@@ -419,22 +470,20 @@ footer{background:var(--ink);color:rgba(242,235,225,.6);padding:2rem 0}
       <path d="M -155 155 L -120 100 L -78 78 L -100 120 Z" />
       <path d="M 155 155 L 100 120 L 78 78 L 120 100 Z" />
       <path d="M -155 -155 L -100 -120 L -78 -78 L -120 -100 Z" />
-      
       <path d="M 0 -130 C 40 -130 50 -60 0 -30 C -50 -60 -40 -130 0 -130 Z" />
       <path d="M 0 130 C 40 130 50 60 0 30 C -50 60 -40 130 0 130 Z" />
       <path d="M 130 0 C 130 40 60 50 30 0 C 60 -50 130 -40 130 0 Z" />
       <path d="M -130 0 C -130 40 -60 50 -30 0 C -60 -50 -130 -40 -130 0 Z" />
-      
       <path d="M 92 -92 C 120 -60 60 -20 21 -21 C 60 20 120 -60 92 -92 Z" />
       <path d="M -92 92 C -120 60 -60 20 -21 21 C -60 -20 -120 60 -92 92 Z" />
       <path d="M 92 92 C 60 120 20 60 21 21 C -20 60 60 120 92 92 Z" />
       <path d="M -92 -92 C -60 -120 -20 -60 -21 -21 C 20 -60 -60 -120 -92 -92 Z" />
-      
       <circle cx="0" cy="0" r="15" />
       <circle cx="0" cy="0" r="30" stroke-dasharray="4 4" />
     </g>
   </svg>
 
+  <!-- Corner Flower Top-Left -->
   <svg class="exact-flower-svg f-corner-tl" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
     <g transform="translate(250, 250)">
       <path d="M 0 -220 L 20 -150 L 0 -110 L -20 -150 Z" />
@@ -453,6 +502,7 @@ footer{background:var(--ink);color:rgba(242,235,225,.6);padding:2rem 0}
     </g>
   </svg>
   
+  <!-- Corner Flower Bottom-Right -->
   <svg class="exact-flower-svg f-corner-br" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
     <g transform="translate(250, 250)">
       <path d="M 0 -220 L 20 -150 L 0 -110 L -20 -150 Z" />
@@ -567,6 +617,7 @@ footer{background:var(--ink);color:rgba(242,235,225,.6);padding:2rem 0}
   </div>
 </section>
 
+<!-- ============ SPECIALIZATIONS (WOW SYMMETRICAL DESIGN) ============ -->
 <section class="specializations sec-pad" id="specializations">
   <div class="wrap">
     <div class="reveal">
@@ -575,22 +626,27 @@ footer{background:var(--ink);color:rgba(242,235,225,.6);padding:2rem 0}
     </div>
     <div class="spec-grid">
       <div class="spec-card reveal d1">
+        <span class="spec-num">01</span>
         <h3>Διαχείριση Στρες</h3>
         <p>Εξειδικεύομαι στην κατανόηση και διαχείριση του στρες, βοηθώντας τους θεραπευόμενους μέσα από μια ολιστική μέθοδο, να αναγνωρίσουν τους παράγοντες που τους επιβαρύνουν και να αναπτύξουν αποτελεσματικούς τρόπους αντιμετώπισης στην καθημερινότητά τους.</p>
       </div>
       <div class="spec-card reveal d2">
+        <span class="spec-num">02</span>
         <h3>Γνωσιακή – Συμπεριφορική Ψυχοθεραπεία (CBT)</h3>
         <p>Μια επιστημονικά τεκμηριωμένη θεραπευτική προσέγγιση που εστιάζει στη σύνδεση σκέψεων, συναισθημάτων, σωματικών συμπτωμάτων και συμπεριφορών, με στόχο την αντιμετώπιση δυσκολιών και την ενίσχυση της ψυχικής ευεξίας.</p>
       </div>
       <div class="spec-card reveal d3">
+        <span class="spec-num">03</span>
         <h3>Συστημική, Αφηγηματική και Συνεργατική-Διαλογική Προσέγγιση</h3>
         <p>Οι προσεγγίσεις αυτές εστιάζουν στις σχέσεις, την προσωπική ιστορία και τα νοήματα που διαμορφώνουν την εμπειρία του ατόμου, μέσα από έναν ανοιχτό και συνεργατικό θεραπευτικό διάλογο.</p>
       </div>
       <div class="spec-card reveal d4">
+        <span class="spec-num">04</span>
         <h3>Εστιασμένη στη Λύση Θεραπεία (Solution-Focused Therapy)</h3>
         <p>Μια προσέγγιση που επικεντρώνεται στις δυνατότητες, τους στόχους και τις υπάρχουσες δυνάμεις του ατόμου, αναζητώντας πρακτικούς τρόπους για την επίτευξη επιθυμητών αλλαγών.</p>
       </div>
-      <div class="spec-card reveal d1">
+      <div class="spec-card reveal d5">
+        <span class="spec-num">05</span>
         <h3>Καταξιωτική Προσέγγιση (Appreciative Inquiry)</h3>
         <p>Εστιάζει στα θετικά στοιχεία, τις αξίες και τα δυνατά σημεία του ανθρώπου, ενισχύοντας την αυτογνωσία, την ανθεκτικότητα και την προσωπική ανάπτυξη.</p>
       </div>
@@ -598,17 +654,33 @@ footer{background:var(--ink);color:rgba(242,235,225,.6);padding:2rem 0}
   </div>
 </section>
 
+<!-- ============ SERVICES (WOW PILL DESIGN) ============ -->
 <section class="services sec-pad" id="services">
   <div class="wrap">
-    <div class="reveal" style="margin-bottom:3rem;">
+    <div class="reveal">
       <span class="eyebrow">Υπηρεσιες</span>
     </div>
     <div class="svc-boxes reveal d1">
-      <div class="svc-box">Ατομικές συνεδρίες ενηλίκων</div>
-      <div class="svc-box">Ατομικές συνεδρίες εφήβων</div>
-      <div class="svc-box">Θεραπευτικές ομάδες</div>
-      <div class="svc-box">Συμβουλευτική γονέων</div>
-      <div class="svc-box">Συνεδρία μέσω βιντεοκλήσης</div>
+      <div class="svc-box">
+        <span>Ατομικές συνεδρίες ενηλίκων</span>
+        <svg class="svc-arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+      <div class="svc-box">
+        <span>Ατομικές συνεδρίες εφήβων</span>
+        <svg class="svc-arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+      <div class="svc-box">
+        <span>Θεραπευτικές ομάδες</span>
+        <svg class="svc-arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+      <div class="svc-box">
+        <span>Συμβουλευτική γονέων</span>
+        <svg class="svc-arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+      <div class="svc-box">
+        <span>Συνεδρία μέσω βιντεοκλήσης</span>
+        <svg class="svc-arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
     </div>
   </div>
 </section>
