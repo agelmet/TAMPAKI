@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Μαίρη Ταμπάκη — Ψυχολόγος & Γνωσιακή-Συμπεριφορική Ψυχοθεραπεύτρια | Ζωγράφου</title>
-<meta name="description" content="Επιστημονικά τεκμηριωμένη Γνωσιακή-Συμπεριφορική Ψυχοθεραπεία (CBT) στου Ζωγράφου. Άγχος, πανικός, κατάθλιψη, αυτοεκτίμηση. Δια ζώσης & online συνεδρίες.">
+<meta name="description" content="Μαίρη Ταμπάκη - Ψυχολόγος & Ψυχοθεραπεύτρια">
 <meta property="og:title" content="Μαίρη Ταμπάκη — Ψυχολόγος & Ψυχοθεραπεύτρια">
-<meta property="og:description" content="Επιστημονικά τεκμηριωμένη φροντίδα για τον άνθρωπο του σήμερα. CBT στου Ζωγράφου.">
+<meta property="og:description" content="Μαίρη Ταμπάκη - Ψυχολόγος & Ψυχοθεραπεύτρια">
 <meta property="og:image" content="https://raw.githubusercontent.com/agelmet/TAMPAKI/1bd6954944dab964d485e9b6df81e4b09d5de1c9/46c93f20-637c-4b3a-a54a-bf1653f9d8fc.webp">
 <meta property="og:type" content="website">
 <link rel="icon" href="https://raw.githubusercontent.com/agelmet/TAMPAKI/refs/heads/main/tamplogo.png">
@@ -156,7 +156,8 @@ header.scrolled{
   transition: transform 0.4s var(--ease);
 }
 .brand-icon svg {
-  width: 26px; height: 26px; stroke: var(--terracotta-deep); stroke-width: 1.5px; fill: none;
+  width: 28px; height: 28px; stroke: var(--terracotta-deep); stroke-width: 1.5px; fill: none;
+  transform: scale(0.9);
 }
 .brand-text { display: flex; flex-direction: column; }
 .brand-name {
@@ -232,17 +233,16 @@ header.scrolled{
 .hero-copy {
   display: flex; flex-direction: column; align-items: center; z-index: 2;
 }
-.hero-badge { 
-  display: inline-block; padding: 0.55rem 1.2rem; background: rgba(181,86,46,0.1); 
-  color: var(--terracotta-deep); border-radius: 100px; font-weight: 700; font-size: 0.8rem; 
-  letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.8rem; 
-  opacity: 0; transform: translateY(20px); animation: up 0.9s var(--ease) 1s forwards; 
-}
 .hero h1{
   font-size:clamp(2.4rem, 6vw, 5.5rem);line-height:1.05;letter-spacing:-.02em;
   text-shadow: 0 15px 35px rgba(43,38,34,.12); max-width: 22ch; margin: 0 auto;
 }
-.hero h1 .ln{display:block;overflow:hidden}
+.hero h1 .ln{
+  display:block;
+  overflow:hidden;
+  padding-bottom:0.2em; /* Fix for preventing descending letters from getting cut off */
+  margin-bottom:-0.2em;
+}
 .hero h1 .ln i{display:block;font-style:normal;transform:translateY(110%);animation:lineUp 1.2s var(--ease) forwards}
 .hero h1 .ln:nth-child(1) i{animation-delay:.4s}
 .hero h1 .ln:nth-child(2) i{animation-delay:.6s}
@@ -251,7 +251,7 @@ header.scrolled{
 @keyframes lineUp{to{transform:translateY(0)}}
 @keyframes up{to{opacity:1;transform:translateY(0)}}
 .hero-sub{
-  margin-top:2.2rem;max-width:65ch;font-size:clamp(1.05rem,1.8vw,1.2rem); line-height: 1.6;
+  margin-top:1.8rem;max-width:65ch;font-size:clamp(1.05rem,1.8vw,1.2rem); line-height: 1.6;
   color:var(--ink-soft);opacity:0;transform:translateY(20px);animation:up .9s var(--ease) 1.35s forwards;
 }
 .hero-actions{margin-top:2.8rem;display:flex;flex-wrap:wrap;gap:1.2rem;justify-content:center;opacity:0;transform:translateY(20px);animation:up .9s var(--ease) 1.5s forwards}
@@ -309,7 +309,7 @@ section{position:relative}
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5)); 
   border: 1px solid rgba(255, 255, 255, 0.8); 
   border-radius: 24px; padding: 3.5rem 2.5rem; 
-  flex: 1 1 320px; max-width: 350px; /* Perfect symmetry for exactly 5 items */
+  flex: 1 1 320px; max-width: 350px; 
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05), inset 0 0 0 1px rgba(255,255,255,0.5);
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
@@ -429,7 +429,7 @@ section{position:relative}
 .contact{background:var(--terracotta);color:var(--cream);position:relative;overflow:hidden}
 .contact::before{content:"";position:absolute;bottom:-160px;left:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(250,246,239,.16),transparent 70%)}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center;position:relative}
-.contact-info{display:flex;flex-direction:column;gap:1.3rem; margin-top: 1.5rem;}
+.contact-info{display:flex;flex-direction:column;gap:1.5rem; margin-top: 1.5rem;}
 .cinfo{display:flex;align-items:flex-start;gap:1rem}
 .cinfo svg{width:22px;height:22px;flex:none;margin-top:2px;color:var(--cream)}
 .cinfo b{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;opacity:.7;margin-bottom:.2rem;font-weight:600}
@@ -484,7 +484,7 @@ footer{background:var(--ink);color:rgba(242,235,225,.6);padding:2rem 0}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   .reveal{opacity:1;transform:none}
-  .hero h1 .ln i,.hero-badge,.hero-sub,.hero-actions,.scroll-cue{opacity:1;transform:none;animation:none}
+  .hero h1 .ln i,.hero-sub,.hero-actions,.scroll-cue{opacity:1;transform:none;animation:none}
   .orb, .exact-flower-svg { animation: none !important; }
 }
 </style>
@@ -616,7 +616,6 @@ footer{background:var(--ink);color:rgba(242,235,225,.6);padding:2rem 0}
 <section class="hero wrap">
   <div class="hero-grid">
     <div class="hero-copy">
-      <div class="hero-badge">MSc Ιατρική Σχολή</div>
       <h1>
         <span class="ln"><i>Με φροντίδα και σεβασμό,</i></span>
         <span class="ln"><i>σας συνοδεύω στη</i></span>
@@ -632,13 +631,6 @@ footer{background:var(--ink);color:rgba(242,235,225,.6);padding:2rem 0}
   </div>
   <div class="scroll-cue"><span>κυλήστε</span><span class="dot"></span></div>
 </section>
-
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <span>Άγχος & Πανικός</span><span>Κατάθλιψη</span><span>Αυτοεκτίμηση</span><span>Εφηβεία & Γονείς</span><span>Online Συνεδρίες</span><span>Τραύμα</span><span>Ψυχομετρική Αξιολόγηση</span><span>Προσωπική Εξέλιξη</span>
-    <span>Άγχος & Πανικός</span><span>Κατάθλιψη</span><span>Αυτοεκτίμηση</span><span>Εφηβεία & Γονείς</span><span>Online Συνεδρίες</span><span>Τραύμα</span><span>Ψυχομετρική Αξιολόγηση</span><span>Προσωπική Εξέλιξη</span>
-  </div>
-</div>
 
 <section class="about sec-pad" id="about">
   <div class="wrap about-grid">
@@ -753,6 +745,14 @@ footer{background:var(--ink);color:rgba(242,235,225,.6);padding:2rem 0}
       <span class="eyebrow">Επικοινωνια</span>
       <div class="contact-info">
         <div class="cinfo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div><b>Τηλεφωνο</b><a href="tel:+306971850132">6971850132</a></div>
+        </div>
+        <div class="cinfo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          <div><b>Email</b><a href="mailto:marytampaki.psy@gmail.com">marytampaki.psy@gmail.com</a></div>
+        </div>
+        <div class="cinfo">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5"/></svg>
           <div><b>Διευθυνση</b><span>Παιανίας 6, Ζωγράφου, Αττική<br><small style="opacity:.8">(πάρκινγκ επί πληρωμή σε κοντινή απόσταση)</small></span></div>
         </div>
@@ -790,11 +790,6 @@ footer{background:var(--ink);color:rgba(242,235,225,.6);padding:2rem 0}
 <script>
 (function(){
   "use strict";
-
-  /* ---------- LOADER ---------- */
-  window.addEventListener("load",function(){
-    setTimeout(function(){document.getElementById("loader").classList.add("done");},1700);
-  });
 
   /* ---------- NAV scroll state ---------- */
   var header=document.getElementById("header");
